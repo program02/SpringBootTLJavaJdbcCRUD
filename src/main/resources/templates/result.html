@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+table, tr, td, th {
+	border: 1px solid black;
+}
+
+table, tr, td {
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+	<h1>Show All Table</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Round</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		<tr th:each="student: ${stList}">
+			<td th:text="${student.id}" />
+			<td th:text="${student.name}" />
+			<td th:text="${student.email}" />
+			<td th:text="${student.round}" />
+			<td>
+				<form action='updatef'>
+					<input type="hidden" name="id" th:value="${student.id}" /> 
+					<input type="hidden" name="name" th:value="${student.name}" /> 
+					<input type="hidden" name="email" th:value="${student.email}" /> 
+					<input type="hidden" name="round" th:value="${student.round}" /> 
+					<input type="submit" value="Update" />
+				</form>
+			</td>
+			<td>
+				<form action='deletebyid'>
+					<input type="hidden" name="id" th:value="${student.id}" /> 
+					<input type="submit" value="Delete" />
+				</form>
+			</td>
+		</tr>
+	</table>
+<a href="/">Go to Home Page</a>
+
+</body>
+</html>
